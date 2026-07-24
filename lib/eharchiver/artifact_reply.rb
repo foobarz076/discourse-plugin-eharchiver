@@ -112,7 +112,8 @@ module Eharchiver
           raise ArtifactError, "Artifact manifest schema is unsupported."
         end
         gallery = manifest["gallery"]
-        if !gallery.is_a?(Hash) || gallery["source_url"] != task.gallery_url
+        if !gallery.is_a?(Hash) ||
+             !GalleryUrl.same_identity?(gallery["source_url"], task.gallery_url)
           raise ArtifactError, "Artifact gallery does not match the task."
         end
 

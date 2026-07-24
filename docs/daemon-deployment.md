@@ -106,6 +106,7 @@ EHARCHIVER_DAEMON_API_KEY=<independent-secret>
 EHARCHIVER_TASK_SIGNING_SECRET=<independent-secret>
 EHARCHIVER_DISCOURSE_ISSUER=https://forum.example
 EHARCHIVER_COOKIE_FILE=/run/secrets/e-hentai.org_cookies.txt
+EHARCHIVER_UPSTREAM_HOST=exhentai.org
 
 EHARCHIVER_TASK_AUDIENCE=eharchiver-daemon
 EHARCHIVER_TASK_MAX_LIFETIME_SECONDS=600
@@ -118,6 +119,10 @@ EHARCHIVER_MIN_REMAINING_GP=0
 
 `EHARCHIVER_DISCOURSE_ISSUER` must exactly match the Discourse base URL used in
 task tokens, including scheme and any non-default port.
+`EHARCHIVER_UPSTREAM_HOST` must be `e-hentai.org` or `exhentai.org`; the cookie
+file must contain an unexpired cookie scoped to that host. The daemon routes
+gallery and `archiver.php` requests through this setting regardless of the host
+in the submitted URL.
 
 Start with original and paid downloads disabled. The daemon settings are hard
 ceilings: a signed Discourse task cannot override them. Enable either feature
@@ -389,6 +394,7 @@ EHARCHIVER_DAEMON_API_KEY=<独立机密>
 EHARCHIVER_TASK_SIGNING_SECRET=<独立机密>
 EHARCHIVER_DISCOURSE_ISSUER=https://forum.example
 EHARCHIVER_COOKIE_FILE=/run/secrets/e-hentai.org_cookies.txt
+EHARCHIVER_UPSTREAM_HOST=exhentai.org
 
 EHARCHIVER_TASK_AUDIENCE=eharchiver-daemon
 EHARCHIVER_TASK_MAX_LIFETIME_SECONDS=600
@@ -401,6 +407,9 @@ EHARCHIVER_MIN_REMAINING_GP=0
 
 `EHARCHIVER_DISCOURSE_ISSUER` 必须与任务令牌所用的 Discourse 基础 URL 完全
 一致，包括协议和任何非默认端口。
+`EHARCHIVER_UPSTREAM_HOST` 必须是 `e-hentai.org` 或 `exhentai.org`；Cookie
+文件必须包含作用于该 host 且尚未过期的 Cookie。无论任务提交 URL 使用哪个
+host，daemon 都会通过这里配置的 host 访问画廊和 `archiver.php`。
 
 初始状态应禁止原始版本和付费下载。Daemon 设置是硬上限；Discourse 的签名
 任务不能覆盖它们。只有在检查画廊帐号、GP 预算、余额保留线、Cookie 安全性和

@@ -7,6 +7,7 @@ RSpec.describe Eharchiver::ArtifactReply do
   let(:topic) { Fabricate(:topic, user: requester) }
   let(:source_post) { Fabricate(:post, topic: topic, user: requester) }
   let(:gallery_url) { "https://e-hentai.org/g/3407838/b8ae774a46/" }
+  let(:artifact_gallery_url) { gallery_url }
   let(:japanese_title) { "日本語の画廊タイトル" }
   let(:original_title) { "Original gallery title" }
   let(:max_attachment_size_kb) { 10_240 }
@@ -42,7 +43,7 @@ RSpec.describe Eharchiver::ArtifactReply do
     manifest = {
       schema_version: 3,
       gallery: {
-        source_url: gallery_url,
+        source_url: artifact_gallery_url,
         japanese_title: japanese_title,
         title: original_title,
         tags: trusted_tags,
@@ -137,6 +138,47 @@ RSpec.describe Eharchiver::ArtifactReply do
       Eharchiver::ArtifactError,
       /does not match/,
     )
+  end
+
+  context "when the artifact uses the other supported gallery host" do
+    let(:artifact_gallery_url) { "https://exhentai.org/g/3407838/b8ae774a46/" }
+
+    it "accepts the matching gid and token" do
+      expect { described_class.publish!(task) }.not_to raise_error
+    end
+  end
+
+  context "when the artifact gallery gid differs" do
+    let(:artifact_gallery_url) { "https://exhentai.org/g/3407839/b8ae774a46/" }
+
+    it "rejects the artifact" do
+      expect { described_class.publish!(task) }.to raise_error(
+        Eharchiver::ArtifactError,
+        "Artifact gallery does not match the task.",
+      )
+    end
+  end
+
+  context "when the artifact gallery token differs" do
+    let(:artifact_gallery_url) { "https://exhentai.org/g/3407838/aaaaaaaaaa/" }
+
+    it "rejects the artifact" do
+      expect { described_class.publish!(task) }.to raise_error(
+        Eharchiver::ArtifactError,
+        "Artifact gallery does not match the task.",
+      )
+    end
+  end
+
+  context "when the artifact gallery URL is invalid" do
+    let(:artifact_gallery_url) { "not a gallery URL" }
+
+    it "rejects the artifact" do
+      expect { described_class.publish!(task) }.to raise_error(
+        Eharchiver::ArtifactError,
+        "Artifact gallery does not match the task.",
+      )
+    end
   end
 
   context "when the Japanese title is absent" do

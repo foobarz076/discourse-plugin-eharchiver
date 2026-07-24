@@ -40,6 +40,7 @@ the earliest date by which the repository proves that the decision existed.
 | [0005](0005-use-task-capabilities-and-separate-secrets.md) | Accepted (retrospective) | Use short-lived task capabilities and separate secrets |
 | [0006](0006-verify-artifacts-before-discourse-import.md) | Accepted (retrospective) | Verify artifacts before native Discourse import |
 | [0007](0007-design-side-effects-for-idempotency-and-audit.md) | Accepted (retrospective) | Design side effects for idempotency and audit |
+| [0008](0008-authorize-gallery-identity-independently-of-upstream-host.md) | Accepted | Authorize gallery identity independently of upstream host |
 
 ## Decisions not yet recorded as accepted
 
