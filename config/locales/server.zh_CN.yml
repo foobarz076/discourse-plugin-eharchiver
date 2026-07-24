@@ -1,0 +1,26 @@
+zh_CN:
+  eharchiver:
+    dashboard:
+      errors:
+        plugin_disabled: "EH Archiver 当前已停用。"
+        not_retryable: "只能重试失败的任务。"
+        requester_not_authorized: "原请求用户当前已无权执行此任务。"
+        active_retry: "此任务已经有一个进行中的重试。"
+        retry_failed: "无法创建重试任务。"
+    notifications:
+      not_available: "不可用"
+      permission_denied_title: "无权发起 EH Archiver 请求"
+      permission_denied_body: "汝在 %{topic_url} 发起的 EH Archiver 请求无法开始，因为帐号或该主题没有所需权限。"
+      request_failed_title: "EH Archiver 请求失败"
+      request_failed_body: "%{gallery_url} 的归档请求未能完成。请确认所请求的归档选项可用且已获允许，然后重试。"
+      pdf_omitted_title: "EH Archiver 回复中不含 PDF"
+      pdf_omitted_body: "%{gallery_url} 在 %{reply_url} 的 EH Archiver 回复包含元数据和转换后的图片，但不含生成的 PDF。PDF 大小为 %{pdf_size}，超过了本站 %{limit} 的附件大小上限。"
+      operational_failure_title: "EH Archiver 运行故障"
+      delivery_failure_title: "EH Archiver 无法发布 Artifact"
+      operational_failure_body: |
+        EH Archiver 需要管理员处理。
+
+        - 任务：`%{task_id}`
+        - 画廊：%{gallery_url}
+        - 来源请求：%{source_url}
+        - 错误代码：`%{error_code}`

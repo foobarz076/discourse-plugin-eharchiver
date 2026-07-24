@@ -3,7 +3,73 @@ en:
     admin:
       site_settings:
         categories:
-          TODO_plugin_name: "Plugin Name"
-  js:
-    discourse_plugin_name:
-      placeholder: placeholder
+          eharchiver: "EH Archiver"
+      eharchiver:
+        dashboard:
+          title: "Tasks"
+          description: "Monitor archive tasks and retry failed work."
+          refresh: "Refresh"
+          plugin_disabled: "EH Archiver is disabled. Existing tasks remain visible, but retries are unavailable."
+          filter_label: "Filter tasks by status"
+          filters:
+            all: "All"
+            active: "In progress"
+            failed: "Failed"
+            completed: "Completed"
+          columns:
+            source: "Source"
+            status: "Status"
+            quality: "Quality"
+            created_at: "Created"
+            actions: "Actions"
+          stages:
+            submitting: "Submitting"
+            confirming: "Confirming"
+            queued: "Queued"
+            downloading: "Downloading"
+            publishing: "Publishing"
+            completed: "Completed"
+            failed: "Failed"
+            cancelled: "Cancelled"
+            unknown: "Unknown"
+          qualities:
+            resample: "Resampled"
+            original: "Original"
+          requested_by: "Requested by %{username}"
+          gallery: "Gallery"
+          retry_attempt: "Retry"
+          retry: "Retry"
+          retry_started: "A new retry task was created."
+          view_result: "View result"
+          empty: "No tasks match this filter."
+          pagination: "Task pages"
+          previous: "Previous"
+          next: "Next"
+          page: "Page %{page}"
+
+  site_settings:
+    eharchiver_enabled: "Enable EH Archiver. Keep disabled until the daemon URL and secrets are configured."
+    eharchiver_daemon_url: "Base URL of the EH Archiver daemon. This value is server-only and is never sent to browsers."
+    eharchiver_daemon_api_key: "API key used by Discourse to authenticate requests to the daemon. Use a separate secret from task signing."
+    eharchiver_task_signing_secret: "Shared HS256 secret used to sign short-lived download task JWTs. It must contain at least 32 bytes and match the daemon configuration."
+    eharchiver_webhook_signing_secret: "Separate secret used to verify daemon task-status callbacks."
+    eharchiver_task_token_ttl_seconds: "Lifetime of a signed download authorization. The daemon rejects tokens lasting more than 600 seconds."
+    eharchiver_daemon_request_timeout_seconds: "Timeout for Discourse-to-daemon HTTP requests, in seconds."
+    eharchiver_status_poll_interval_seconds: "How often Discourse reconciles active task status with the daemon, in seconds. Signed webhooks may update status sooner."
+    eharchiver_max_artifact_size_mb: "Maximum daemon artifact ZIP size Discourse will download, in MiB. Individual uploads must also satisfy Discourse upload settings."
+    eharchiver_bot_username: "Username used by the EH Archiver bot. The plugin creates and manages the account; a numeric suffix is added if the username is already taken."
+    eharchiver_notification_admin_username: "Administrator who receives private operational-failure notifications when Chat delivery is unavailable. Leave blank to log only."
+    eharchiver_notification_chat_channel_id: "Optional Chat channel ID for operational-failure notifications. Requires the Chat plugin; failures fall back to the configured administrator."
+    eharchiver_trigger_mode: "Choose whether users submit archive tasks manually or gallery links trigger tasks automatically. Group and category restrictions still apply."
+    eharchiver_default_archive_quality: "Default requested archive quality. When the default is original, requests from users without original-download permission automatically use the resampled archive."
+    eharchiver_allowed_categories: "Categories where archive tasks are allowed. Leave empty to allow every category, subject to group permissions."
+    eharchiver_request_allowed_groups: "Groups allowed to request archive tasks."
+    eharchiver_original_download_groups: "Groups allowed to request original archives. This does not grant permission to spend GP."
+    eharchiver_paid_download_groups: "Groups allowed to authorize a non-zero GP cost, within the standard per-download limit."
+    eharchiver_elevated_spending_groups: "Groups that receive the elevated per-download GP limit. Daemon hard limits still take precedence."
+    eharchiver_standard_max_gp_per_download: "Maximum GP authorized for one paid download by standard paid-download groups. Zero disables spending."
+    eharchiver_elevated_max_gp_per_download: "Maximum GP authorized for one download by elevated-spending groups. Zero disables spending."
+    eharchiver_min_remaining_gp: "Minimum GP balance the signed task asks the daemon to preserve after a paid download. The daemon may enforce a higher reserve."
+    eharchiver_include_uploader_comment: "Include the external gallery uploader comment in the generated Discourse reply. Disabled by default because it is untrusted external content."
+    eharchiver_pdf_max_width: "Maximum converted image width used for generated PDF artifacts. Images are never upscaled."
+    eharchiver_jpeg_quality: "JPEG quality used for converted images and generated PDFs."

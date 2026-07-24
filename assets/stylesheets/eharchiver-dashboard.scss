@@ -1,0 +1,73 @@
+.eharchiver-task-dashboard {
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-block: 1rem;
+  }
+
+  &__table-wrapper {
+    overflow-x: auto;
+  }
+
+  &__table {
+    width: 100%;
+  }
+
+  &__source {
+    font-weight: 600;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    margin-top: 0.25rem;
+    color: var(--primary-medium);
+    font-size: var(--font-down-1);
+  }
+
+  &__error {
+    max-width: 42rem;
+    margin-top: 0.5rem;
+    color: var(--danger);
+    font-size: var(--font-down-1);
+    overflow-wrap: anywhere;
+  }
+
+  &__status {
+    display: inline-flex;
+    padding: 0.2rem 0.55rem;
+    border-radius: 1rem;
+    background: var(--primary-low);
+    white-space: nowrap;
+
+    &--completed {
+      color: var(--success);
+      background: var(--success-low);
+    }
+
+    &--failed {
+      color: var(--danger);
+      background: var(--danger-low);
+    }
+
+    &--cancelled {
+      color: var(--primary-medium);
+    }
+
+    &--downloading,
+    &--publishing {
+      color: var(--tertiary);
+      background: var(--tertiary-low);
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+}

@@ -1,1 +1,26 @@
 en:
+  eharchiver:
+    dashboard:
+      errors:
+        plugin_disabled: "EH Archiver is disabled."
+        not_retryable: "Only failed tasks can be retried."
+        requester_not_authorized: "The original requester is no longer authorized to run this task."
+        active_retry: "This task already has an active retry."
+        retry_failed: "The retry task could not be created."
+    notifications:
+      not_available: "not available"
+      permission_denied_title: "EH Archiver request not permitted"
+      permission_denied_body: "Your EH Archiver request at %{topic_url} could not be started because your account or that topic does not have the required permission."
+      request_failed_title: "EH Archiver request failed"
+      request_failed_body: "The archive request for %{gallery_url} could not be completed. Check that the requested archive option is available and permitted, then try again."
+      pdf_omitted_title: "EH Archiver reply does not include a PDF"
+      pdf_omitted_body: "The EH Archiver reply at %{reply_url} for %{gallery_url} contains the metadata and converted images, but not the generated PDF. The PDF is %{pdf_size}, exceeding this site's %{limit} maximum attachment size."
+      operational_failure_title: "EH Archiver operational failure"
+      delivery_failure_title: "EH Archiver could not publish an artifact"
+      operational_failure_body: |
+        EH Archiver requires administrator attention.
+
+        - Task: `%{task_id}`
+        - Gallery: %{gallery_url}
+        - Source request: %{source_url}
+        - Error code: `%{error_code}`

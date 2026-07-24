@@ -1,4 +1,98 @@
-TODO_plugin_name:
-  plugin_name_enabled:
+eharchiver:
+  eharchiver_enabled:
     default: false
     client: true
+
+  eharchiver_daemon_url:
+    default: ""
+  eharchiver_daemon_api_key:
+    default: ""
+    secret: true
+  eharchiver_task_signing_secret:
+    default: ""
+    secret: true
+  eharchiver_webhook_signing_secret:
+    default: ""
+    secret: true
+  eharchiver_task_token_ttl_seconds:
+    default: 300
+    min: 30
+    max: 600
+  eharchiver_daemon_request_timeout_seconds:
+    default: 30
+    min: 1
+    max: 120
+  eharchiver_status_poll_interval_seconds:
+    default: 10
+    min: 10
+    max: 300
+  eharchiver_max_artifact_size_mb:
+    default: 4096
+    min: 1
+    max: 16384
+
+  eharchiver_bot_username:
+    default: "eharchiver"
+  eharchiver_notification_admin_username:
+    default: ""
+    type: username
+  eharchiver_notification_chat_channel_id:
+    default: 0
+    min: 0
+  eharchiver_trigger_mode:
+    type: enum
+    default: "manual"
+    choices:
+      - "manual"
+      - "automatic"
+  eharchiver_default_archive_quality:
+    type: enum
+    default: "resample"
+    choices:
+      - "resample"
+      - "original"
+  eharchiver_allowed_categories:
+    type: category_list
+    default: ""
+    client: false
+  eharchiver_request_allowed_groups:
+    type: group_list
+    default: "3" # staff
+    allow_any: false
+    refresh: true
+  eharchiver_original_download_groups:
+    type: group_list
+    default: "3" # staff
+    allow_any: false
+    refresh: true
+  eharchiver_paid_download_groups:
+    type: group_list
+    default: "1" # admins
+    allow_any: false
+    refresh: true
+  eharchiver_elevated_spending_groups:
+    type: group_list
+    default: "1" # admins
+    allow_any: false
+    refresh: true
+
+  eharchiver_standard_max_gp_per_download:
+    default: 0
+    min: 0
+  eharchiver_elevated_max_gp_per_download:
+    default: 0
+    min: 0
+  eharchiver_min_remaining_gp:
+    default: 0
+    min: 0
+
+  eharchiver_include_uploader_comment:
+    default: false
+  eharchiver_pdf_max_width:
+    default: 2560
+    min: 320
+    max: 8192
+  eharchiver_jpeg_quality:
+    default: 92
+    min: 1
+    max: 100
