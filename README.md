@@ -3,6 +3,13 @@
 A Discourse plugin for authorizing, submitting, and displaying gallery archive
 tasks executed by the separate EH Archiver daemon.
 
+## Documentation
+
+- [Project structure](docs/project-structure.md)
+- [Architecture decision records](docs/adr/README.md)
+- [Daemon deployment reference for administrators](docs/daemon-deployment.md)
+- [End-user guide](docs/user-guide.md)
+
 The plugin is disabled by default. Configure its daemon connection, task and
 webhook signing secrets, category/group permissions, and GP limits in the
 `EH Archiver` site-settings category before enabling it.
