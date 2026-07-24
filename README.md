@@ -114,3 +114,8 @@ marks it failed instead of polling forever.
 
 Credentials for E-Hentai or ExHentai belong to the daemon deployment and must
 not be stored in this plugin's site settings.
+
+## License
+
+Discourse EH Archiver is licensed under the MIT License. The complete license
+text and preserved copyright notices are in [LICENSE](LICENSE).
